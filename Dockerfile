@@ -36,4 +36,4 @@ RUN echo "*** Installing Compiler Explorer ***" \
     
 WORKDIR /compiler-explorer
 
-ENTRYPOINT [ "/usr/bin/nodejs app.js" ]
+ENTRYPOINT [ "/usr/bin/nodejs", "/compiler-explorer/app.js" ]
