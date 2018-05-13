@@ -1,0 +1,12 @@
+language: python
+python:
+  - 3.5
+
+services:
+  - docker
+
+install:
+  - docker build -t madduci/docker-compiler-explorer:latest .
+
+script:
+  - docker images
