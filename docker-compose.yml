@@ -1,4 +1,4 @@
-version: "3"
+version: "3.1"
 
 services:
   compiler-explorer:
@@ -7,13 +7,9 @@ services:
       dockerfile: Dockerfile
     image: madduci/compiler-explorer:latest
     container_name: godbolt-ce
-    hostname: godbolt-ce
     ports:
       - 10240:10240
     networks:
       - ce_network
     restart: on-failure
     stop_grace_period: 1m30s
-
-networks:
-  ce_network:
