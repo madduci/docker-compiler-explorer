@@ -13,3 +13,6 @@ services:
       - ce_network
     restart: on-failure
     stop_grace_period: 1m30s
+
+networks: 
+  ce_network:
