@@ -6,11 +6,12 @@ EXPOSE 10240
 
 RUN echo "*** Installing Compiler Explorer ***" \
     && DEBIAN_FRONTEND=noninteractive apt-get update \
+    && apt-get install -y curl \
+    && curl -sL https://deb.nodesource.com/setup_12.x | bash - \
     && apt-get install -y \
         wget \
         ca-certificates \
         nodejs \
-        npm \
         make \
         git \
     && apt-get autoremove --purge -y \
