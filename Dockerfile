@@ -17,7 +17,7 @@ RUN echo "*** Installing Compiler Explorer ***" \
     && apt-get autoremove --purge -y \
     && apt-get autoclean -y \
     && rm -rf /var/cache/apt/* /tmp/* \
-    && git clone https://github.com/mattgodbolt/compiler-explorer.git /compiler-explorer \
+    && git clone https://github.com/compiler-explorer/compiler-explorer.git /compiler-explorer \
     && cd /compiler-explorer \
     && echo "Add missing dependencies" \
     && npm i @sentry/node \
