@@ -21,9 +21,9 @@ RUN echo "*** Installing Compiler Explorer ***" \
     && cd /compiler-explorer \
     && echo "Add missing dependencies" \
     && npm i @sentry/node \
-    && echo "Add Compilers to Compiler-Explorer" \
-    && sed -i '/defaultCompiler=/c\defaultCompiler=\/usr\/bin\/g++-8' etc/config/c++.defaults.properties \
     && make webpack
+
+ADD cpp.properties /compiler-explorer/etc/config/c++.defaults.properties
 
 WORKDIR /compiler-explorer
 
