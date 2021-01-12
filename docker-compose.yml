@@ -6,7 +6,7 @@ services:
       context: ./
       dockerfile: Dockerfile
     image: madduci/compiler-explorer:latest
-    container_name: godbolt-ce
+    container_name: compiler-explorer
     ports:
       - 10240:10240
     networks:
