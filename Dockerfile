@@ -15,6 +15,8 @@ RUN echo "*** Installing Compiler Explorer ***" \
         nodejs \
         make \
         git \
+        clang-11 \
+        libstdc++6 \
     && apt-get autoremove --purge -y \
     && apt-get autoclean -y \
     && rm -rf /var/cache/apt/* /tmp/* \
@@ -24,7 +26,7 @@ RUN echo "*** Installing Compiler Explorer ***" \
     && npm i @sentry/node \
     && make webpack
 
-ADD cpp.properties /compiler-explorer/etc/config/c++.defaults.properties
+ADD cpp.properties /compiler-explorer/etc/config/c++.local.properties
 
 WORKDIR /compiler-explorer
 
