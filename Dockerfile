@@ -15,7 +15,6 @@ RUN echo "*** Installing Compiler Explorer ***" \
         nodejs \
         make \
         git \
-        clang-11 \
         libstdc++6 \
     && apt-get autoremove --purge -y \
     && apt-get autoclean -y \
