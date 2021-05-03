@@ -24,7 +24,7 @@ RUN echo "*** Installing Compiler Explorer ***" \
     && npm i @sentry/node \
     && make webpack
 
-ADD cpp.properties /compiler-explorer/etc/config/c++.defaults.properties
+ADD cpp.properties /compiler-explorer/etc/config/c++.local.properties
 
 WORKDIR /compiler-explorer
 
