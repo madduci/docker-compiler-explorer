@@ -1,11 +1,11 @@
-version: "3.1"
+version: "3"
 
 services:
   compiler-explorer:
     build:
       context: ./
       dockerfile: Dockerfile
-    image: madduci/compiler-explorer:latest
+    image: madduci/docker-compiler-explorer:latest
     container_name: compiler-explorer
     ports:
       - 10240:10240
