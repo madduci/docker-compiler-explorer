@@ -1,5 +1,7 @@
 # docker-compiler-explorer
 
+[![Build and Publish](https://github.com/madduci/docker-compiler-explorer/actions/workflows/build.yaml/badge.svg)](https://github.com/madduci/docker-compiler-explorer/actions/workflows/build.yaml)
+
 A docker-based version of [Matt Godbolt's Compiler Explorer](https://github.com/mattgodbolt/compiler-explorer) for self-hosting purposes.
 
 The repository contains a `Dockerfile` with all the required instructions to build the compiler explorer application (with some adjustments to the Makefile as long as there's no 'sudo') and a `docker-compose.yml` file, which keeps some setup instructions such as the port mapping and network, in case you might want to map the default port exposed by the application, 10240, in an easy way.
