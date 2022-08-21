@@ -34,7 +34,10 @@ RUN echo "*** Installing Compiler Explorer ***" \
     && npm i @sentry/node \
     npm run webpack
 
+RUN cd /root/.wine/drive_c/windows/system32 && ln -s ../../Program\ Files/Microsoft\ Visual\ Studio\ 8/Common7/IDE/mspdb80.dll
+
 ADD cpp.properties /compiler-explorer/etc/config/c++.local.properties
+ADD execution.properties /compiler-explorer/etc/config/execution.local.properties
 
 WORKDIR /compiler-explorer
 
