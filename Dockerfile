@@ -9,15 +9,25 @@ RUN echo "*** Installing Compiler Explorer ***" \
     && DEBIAN_FRONTEND=noninteractive apt-get update \
     && apt-get install -y curl \
     && curl -sL https://deb.nodesource.com/setup_16.x | bash - \
+    && dpkg --add-architecture i386 \
+    && apt-get update \
     && apt-get install -y \
         wget \
         ca-certificates \
         nodejs \
         make \
         git \
+        wine32 \
+        xvfb \
     && apt-get autoremove --purge -y \
     && apt-get autoclean -y \
     && rm -rf /var/cache/apt/* /tmp/* \
+    && echo "Installing MSVC" \
+    && wget  https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks \
+    && chmod +x winetricks \
+    && (Xvfb :100 &) \
+    && export DISPLAY=:100 \
+    && WINEARCH=win32 ./winetricks -q vc2005expresssp1 \
     && git clone https://github.com/compiler-explorer/compiler-explorer.git /compiler-explorer \
     && cd /compiler-explorer \
     && echo "Add missing dependencies" \
