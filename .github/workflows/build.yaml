@@ -40,6 +40,8 @@ jobs:
             eschwartz/docker-msvc-compiler-explorer:latest
           # build on feature branches, push only on master branch
           push: ${{ github.ref == 'refs/heads/master' }}
+          cache-from: type=registry,ref=eschwartz/docker-msvc-compiler-explorer:latest
+          cache-to: type=inline
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
