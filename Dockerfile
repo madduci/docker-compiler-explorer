@@ -19,9 +19,9 @@ RUN echo "*** Installing Compiler Explorer ***" \
         git \
         wine32 \
         xvfb \
+        cabextract \
     && apt-get autoremove --purge -y \
     && apt-get autoclean -y \
-    && rm -rf /var/cache/apt/* /tmp/* \
     && echo "Installing MSVC" \
     && wget  https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks \
     && chmod +x winetricks \
@@ -32,7 +32,9 @@ RUN echo "*** Installing Compiler Explorer ***" \
     && cd /compiler-explorer \
     && echo "Add missing dependencies" \
     && npm i @sentry/node \
-    npm run webpack
+    && npm run webpack \
+    && rm -rf /var/cache/apt/* /tmp/*
+
 
 RUN cd /root/.wine/drive_c/windows/system32 && ln -s ../../Program\ Files/Microsoft\ Visual\ Studio\ 8/Common7/IDE/mspdb80.dll
 
