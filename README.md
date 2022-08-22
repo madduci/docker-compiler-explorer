@@ -1,10 +1,27 @@
-# docker-compiler-explorer
+# docker-msvc-compiler-explorer
 
-[![Build and Publish](https://github.com/madduci/docker-compiler-explorer/actions/workflows/build.yaml/badge.svg)](https://github.com/madduci/docker-compiler-explorer/actions/workflows/build.yaml)
+[![Build and Publish](https://github.com/edmcman/docker-compiler-explorer/actions/workflows/build.yaml/badge.svg)](https://github.com/edmcman/docker-compiler-explorer/actions/workflows/build.yaml)
 
-A docker-based version of [Matt Godbolt's Compiler Explorer](https://github.com/mattgodbolt/compiler-explorer) for self-hosting purposes.
+A docker-based version of [Matt Godbolt's Compiler
+Explorer](https://github.com/mattgodbolt/compiler-explorer) for
+self-hosting purposes that includes some Microsoft Visual C++
+compilers that run using WINE.  It's based on [Michele Adduci's
+Compiler Explorer Docker
+Container](https://github.com/madduci/docker-compiler-explorer).
 
-The repository contains a `Dockerfile` with all the required instructions to build the compiler explorer application (with some adjustments to the Makefile as long as there's no 'sudo') and a `docker-compose.yml` file, which keeps some setup instructions such as the port mapping and network, in case you might want to map the default port exposed by the application, 10240, in an easy way.
+The repository contains a `Dockerfile` with all the required
+instructions to build the compiler explorer application (with some
+adjustments to the Makefile as long as there's no 'sudo') and a
+`docker-compose.yml` file, which keeps some setup instructions such as
+the port mapping and network, in case you might want to map the
+default port exposed by the application, 10240, in an easy way.
+
+## MSVC Versions
+
+Installing MSVC in Wine is not the easiest.  I am working on adding
+others, but right now we support:
+
+* VC++ 2005 Express SP1
 
 ## Requirements
 
@@ -15,7 +32,7 @@ The repository contains a `Dockerfile` with all the required instructions to bui
 
 You can just type in your terminal:
 
-`docker pull madduci/docker-compiler-explorer:latest && docker-compose up -d`
+`docker pull edmcman/docker-compiler-explorer:latest && docker-compose up -d`
 
 to use my docker image or, in case of adjustments to the `Dockerfile`, just type:
 
