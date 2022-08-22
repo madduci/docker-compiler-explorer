@@ -22,6 +22,7 @@ Installing MSVC in Wine is not the easiest.  I am working on adding
 others, but right now we support:
 
 * VC++ 2005 Express SP1
+* VC++ 2008 Express
 
 ## Requirements
 
