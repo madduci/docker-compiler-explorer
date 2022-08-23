@@ -16,3 +16,4 @@ services:
 
 networks: 
   ce_network:
+  
