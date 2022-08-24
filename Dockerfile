@@ -22,7 +22,7 @@ RUN echo "*** Installing Compiler Explorer ***" \
     && cd /compiler-explorer \
     && echo "Add missing dependencies" \
     && npm i @sentry/node \
-    npm run webpack
+    && npm run webpack
 
 ADD cpp.properties /compiler-explorer/etc/config/c++.local.properties
 
