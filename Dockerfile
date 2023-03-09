@@ -8,7 +8,7 @@ EXPOSE 10240
 RUN echo "*** Installing Compiler Explorer ***" \
     && DEBIAN_FRONTEND=noninteractive apt-get update \
     && apt-get install -y curl \
-    && curl -sL https://deb.nodesource.com/setup_16.x | bash - \
+    && curl -sL https://deb.nodesource.com/setup_18.x | bash - \
     && apt-get install -y \
         wget \
         ca-certificates \
