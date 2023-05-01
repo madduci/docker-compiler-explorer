@@ -13,13 +13,21 @@ RUN echo "*** Installing Compiler Explorer ***" \
         wget \
         ca-certificates \
         nodejs \
+        openssh-client \
         make \
         git \
     && apt-get autoremove --purge -y \
     && apt-get autoclean -y \
-    && rm -rf /var/cache/apt/* /tmp/* \
-    && git clone https://github.com/compiler-explorer/compiler-explorer.git /compiler-explorer \
-    && cd /compiler-explorer \
+    && rm -rf /var/cache/apt/* /tmp/*
+
+# Create known_hosts and add github key, to enable no-interaction clone
+RUN mkdir /root/.ssh \
+    && touch /root/.ssh/known_hosts \
+    && ssh-keyscan github.com >> /root/.ssh/known_hosts
+
+RUN git clone https://github.com/compiler-explorer/compiler-explorer.git /compiler-explorer
+
+RUN cd /compiler-explorer \
     && echo "Add missing dependencies" \
     && npm i @sentry/node \
     && npm run webpack
