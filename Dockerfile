@@ -6,6 +6,10 @@ LABEL maintainer="Michele Adduci <adduci@tutanota.com>" \
 EXPOSE 10240
 
 RUN echo "*** Installing Compiler Explorer ***" \
+    && wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - \
+    && add-apt-repository -y "deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-17 main" \
+    && add-apt-repository -y "deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-18 main" \
+    && add-apt-repository -y "deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-19 main" \
     && DEBIAN_FRONTEND=noninteractive apt-get update \
     && apt-get install -y curl \
     && curl -sL https://deb.nodesource.com/setup_18.x | bash - \
@@ -15,14 +19,21 @@ RUN echo "*** Installing Compiler Explorer ***" \
         nodejs \
         make \
         git \
+        g++-9 \
+        g++-10 \
+        g++-11 \
+        clang-16 \
+        clang-17 \
+        clang-18 \
+        clang-19 \
     && apt-get autoremove --purge -y \
     && apt-get autoclean -y \
-    && rm -rf /var/cache/apt/* /tmp/* \
-    && git clone https://github.com/compiler-explorer/compiler-explorer.git /compiler-explorer \
+    && rm -rf /var/cache/apt/* /tmp/*
+RUN git clone https://github.com/compiler-explorer/compiler-explorer.git /compiler-explorer \
     && cd /compiler-explorer \
     && echo "Add missing dependencies" \
     && npm i @sentry/node \
-    && npm run webpack
+    && make prebuild
 
 ADD cpp.properties /compiler-explorer/etc/config/c++.local.properties
 
@@ -30,4 +41,4 @@ WORKDIR /compiler-explorer
 
 ENTRYPOINT [ "make" ]
 
-CMD ["run"]
+CMD ["run-only"]
