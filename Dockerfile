@@ -28,8 +28,8 @@ RUN echo "*** Installing Compiler Explorer ***" \
         clang-19 \
     && apt-get autoremove --purge -y \
     && apt-get autoclean -y \
-    && rm -rf /var/cache/apt/* /tmp/*
-RUN git clone https://github.com/compiler-explorer/compiler-explorer.git /compiler-explorer \
+    && rm -rf /var/cache/apt/* /tmp/* \
+    && git clone https://github.com/compiler-explorer/compiler-explorer.git /compiler-explorer \
     && cd /compiler-explorer \
     && echo "Add missing dependencies" \
     && npm i @sentry/node \
