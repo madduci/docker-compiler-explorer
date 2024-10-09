@@ -1,7 +1,7 @@
 FROM madduci/docker-linux-cpp:latest
 
 LABEL maintainer="Michele Adduci <adduci@tutanota.com>" \
-      license="Copyright (c) 2012-2022, Matt Godbolt"
+      license="Copyright (c) 2012-2024, Matt Godbolt"
 
 EXPOSE 10240
 
@@ -12,7 +12,7 @@ RUN echo "*** Installing Compiler Explorer ***" \
     && add-apt-repository -y "deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-19 main" \
     && DEBIAN_FRONTEND=noninteractive apt-get update \
     && apt-get install -y curl \
-    && curl -sL https://deb.nodesource.com/setup_18.x | bash - \
+    && curl -sL https://deb.nodesource.com/setup_20.x | bash - \
     && apt-get install -y \
         wget \
         ca-certificates \
